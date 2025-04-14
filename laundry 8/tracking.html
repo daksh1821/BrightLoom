@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Tracking - Brightloom Laundry</title>
+    <meta name="description" content="Track your laundry order">
+    <meta name="keywords" content="laundry, clothes, wash, clean, tracking">
+    <meta name="author" content="1callwash.com"> 
+    
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,900' rel='stylesheet' type='text/css'>
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    
+    <style>
+        .tracking-timeline {
+            margin-top: 20px;
+        }
+        
+        .tracking-item {
+            padding: 15px;
+            border-left: 3px solid #007bff;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        
+        .tracking-date {
+            font-weight: bold;
+            color: #007bff;
+        }
+        
+        .tracking-status {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .tracking-details {
+            color: #666;
+        }
+        
+        .label-info {
+            background-color: #5bc0de;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .label-success {
+            background-color: #5cb85c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        .label-warning {
+            background-color: #f0ad4e;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!-- Load page -->
+    <div class="animationload">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- NAVBAR SECTION -->
+    <div class="navbar navbar-main navbar-fixed-top">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                        <div class="info">
+                            <div class="info-item">
+                                <span class="fa fa-phone"></span> Phone 9306068586, 7240634662
+                            </div>
+                            <div class="info-item">
+                                <span class="fa fa-envelope-o"></span> <a href="mailto:brightloom@wash.com" title="">Email brightloom@wash.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                        <div class="top-sosmed pull-right">
+                            <a href="https://web.facebook.com/brightloom" title=""><span class="fa fa-facebook"></span></a>
+                            <a href="#" title=""><span class="fa fa-twitter"></span></a>
+                            <a href="#" title=""><span class="fa fa-instagram"></span></a>                          
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="images/bl.png" alt="" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">HOME</a></li>                  
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li class="active"><a href="tracking.html">ORDER TRACKING</a></li>
+                    <li><a href="pricing.html">PRICING</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- BANNER -->
+    <div class="section subbanner" style="background:url('images/slide_page.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="caption">
+                        <h3>TRACK YOUR ORDER</h3>
+                        <ol class="breadcrumb">
+                          <li class="active">Check the status of your laundry order</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TRACKING SECTION -->
+    <div class="section services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Enter Your Order ID</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form id="tracking-form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="order-id" placeholder="Enter Order ID (e.g., ORD-ABCD1234)">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Track Order</button>
+                                </div>
+                                <div class="text-right">
+                                    <small><a href="debug-orders.html" style="color: #999;">Debug utilities</a></small>
+                                </div>
+                            </form>
+                            
+                            <div id="tracking-result" style="margin-top: 30px;">
+                                <!-- Results will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER SECTION -->
+    <div class="footer">
+        <div class="f-desc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>ABOUT US</h4>
+                            </div>
+                            <p> We provides premium washing and dry cleaning service leveraging mobile based technology.
+                                our aims at providing high quality laundry services coupled with customized experience and express delivery.
+                                We pick up your dirty clothes from your doorstep and deliver fresh, clean clothes back at your doorstep.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>CONNECT WITH US</h4>
+                            </div>
+                            <div class="footer-sosmed">
+                                <a href="https://web.facebook.com/brightloom" title="">
+                                    <div class="item">
+                                        <i class="fa fa-facebook"></i>
+                                    </div>
+                                </a>
+                                <a href="#" title="">
+                                    <div class="item">
+                                        <i class="fa fa-twitter"></i>
+                                    </div>
+                                </a>
+                                <a href="#" title="">
+                                    <div class="item">
+                                        <i class="fa fa-instagram"></i>
+                                    </div>
+                                </a>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>OPERATIONAL TIMINGS</h4>
+                            </div>
+                            <p>
+                                Monday-Saturday<br>
+                                10AM-6PM<br><br><br>
+                                * We are happy to help you.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>GET IN TOUCH</h4>
+                            </div>
+                            <div class="footer-getintouch">
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-phone"></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Phone</div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3">9306068586, 7240634662 </div>
+                                    </div>
+                                </div>
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-envelope "></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Email</div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3"><a href="mailto:brightloom@wash.com" title="">brightloom@wash.com</a></div>
+                                    </div>
+                                </div>
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-globe"></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Website </div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3">www.brightloom.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const trackingForm = document.getElementById("tracking-form");
+            const trackingResult = document.getElementById("tracking-result");
+            const orderId = document.getElementById("order-id");
+            
+            // Log localStorage information for debugging
+            console.log("Current localStorage items:");
+            Object.keys(localStorage).forEach(key => {
+                console.log(`- ${key}: ${typeof localStorage.getItem(key)}`);
+            });
+            
+            // Check if there's a last order ID stored - auto-fill for convenience
+            const lastOrderId = localStorage.getItem("lastOrderId");
+            if (lastOrderId) {
+                console.log("Found lastOrderId:", lastOrderId);
+                orderId.value = lastOrderId;
+                // Auto-submit the form if coming from checkout
+                if (window.location.search.includes("autotrack=true")) {
+                    trackingForm.dispatchEvent(new Event("submit"));
+                }
+            } else {
+                console.log("No lastOrderId found in localStorage");
+            }
+            
+            trackingForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                const orderIdValue = orderId.value.trim();
+                
+                if (!orderIdValue) {
+                    trackingResult.innerHTML = `
+                        <div class="alert alert-danger">
+                            Please enter a valid order ID.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Get stored orders from localStorage
+                let orders = [];
+                try {
+                    const ordersData = localStorage.getItem("orders");
+                    if (ordersData) {
+                        orders = JSON.parse(ordersData);
+                        console.log(`Found ${orders.length} orders in localStorage`);
+                    } else {
+                        console.log("No orders found in localStorage");
+                    }
+                } catch (error) {
+                    console.error("Error parsing orders from localStorage:", error);
+                    trackingResult.innerHTML = `
+                        <div class="alert alert-danger">
+                            Error retrieving order data. Please try creating a new order or use the debug utility to fix the storage.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (!Array.isArray(orders) || orders.length === 0) {
+                    trackingResult.innerHTML = `
+                        <div class="alert alert-warning">
+                            No orders found in the system. To create an order, please go to <a href="form.html">Book My Wash</a>.
+                            <br><br>
+                            <small>If you've already placed an order but can't find it, try using the <a href="debug-orders.html">debug utility</a>.</small>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Find the order with matching ID
+                const order = orders.find(o => o && o.orderId === orderIdValue);
+                
+                if (!order) {
+                    // Log all order IDs for debugging
+                    console.log("Available order IDs:", orders.map(o => o?.orderId || "undefined"));
+                    
+                    trackingResult.innerHTML = `
+                        <div class="alert alert-warning">
+                            Order not found. Please check the order ID and try again.
+                            <br><br>
+                            Available orders: ${orders.length}<br>
+                            Your search: "${orderIdValue}"
+                            <br><br>
+                            <small>If you believe this is an error, please use the <a href="debug-orders.html">debug utility</a>.</small>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Determine status label class
+                let statusClass = "label-info";
+                if (order.status === "Delivered") {
+                    statusClass = "label-success";
+                } else if (order.status === "In Progress") {
+                    statusClass = "label-warning";
+                }
+                
+                // Calculate total amount
+                let totalAmount = 0;
+                order.clothes.forEach(item => {
+                    totalAmount += parseFloat(item.price || 0);
+                });
+                
+                // Display order details and tracking info
+                trackingResult.innerHTML = `
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Order #${order.orderId}</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Customer:</strong> ${order.name || 'Not specified'}</p>
+                                    <p><strong>Phone:</strong> ${order.phone || 'Not specified'}</p>
+                                    <p><strong>Address:</strong> ${order.address || 'Not specified'}, ${order.area || 'Not specified'}, ${order.zip || 'Not specified'}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Order Date:</strong> ${order.orderDate || 'Not specified'}</p>
+                                    <p><strong>Delivery Type:</strong> ${order.deliveryType || 'Regular'}</p>
+                                    <p><strong>Expected Delivery:</strong> ${order.expectedDelivery || 'Not specified'}</p>
+                                    <p><strong>Current Status:</strong> <span class="label ${statusClass}">${order.status || 'Processing'}</span></p>
+                                </div>
+                            </div>
+                            
+                            <hr>
+                            
+                            <h4>Items</h4>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${order.clothes && order.clothes.length > 0 ? 
+                                        order.clothes.map(item => `
+                                            <tr>
+                                                <td>${(item.name || 'Unknown item').replace(/<i class="fa fa-check-circle"><\/i>\s*/g, '')}</td>
+                                                <td>${item.price || '0'} INR</td>
+                                            </tr>
+                                        `).join('') : 
+                                        '<tr><td colspan="2" class="text-center">No items found</td></tr>'
+                                    }
+                                    <tr class="success">
+                                        <td><strong>Total</strong></td>
+                                        <td><strong>${totalAmount.toFixed(2)} INR</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <hr>
+                            
+                            <h4>Tracking Updates</h4>
+                            <div class="tracking-timeline">
+                                ${order.trackingUpdates && order.trackingUpdates.length > 0 ? 
+                                    order.trackingUpdates.map(update => `
+                                        <div class="tracking-item">
+                                            <div class="tracking-date">${update.date || 'Unknown date'}</div>
+                                            <div class="tracking-status">${update.status || 'Status update'}</div>
+                                            <div class="tracking-details">${update.details || 'No details provided'}</div>
+                                        </div>
+                                    `).join('') : 
+                                    '<div class="tracking-item"><div class="tracking-status">No tracking updates available</div></div>'
+                                }
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>

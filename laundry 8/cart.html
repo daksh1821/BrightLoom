@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Book My Wash</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <style>
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-value {
+            margin: 0 10px;
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .btn-xs {
+            padding: 1px 5px;
+            font-size: 12px;
+        }
+        
+        .btn-danger {
+            background-color: #d9534f;
+            border-color: #d43f3a;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR SECTION -->
+    <div class="navbar navbar-main navbar-fixed-top">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                        <div class="info">
+                            <div class="info-item">
+                                <span class="fa fa-phone"></span> Phone 9306068586, 7240634662
+                            </div>
+                            <div class="info-item">
+                                <span class="fa fa-envelope-o"></span> <a href="mailto:brightloom@wash.com" title="">Email brightloom@wash.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                        <div class="top-sosmed pull-right">
+                            <a href="https://web.facebook.com/brightloom" title=""><span class="fa fa-facebook"></span></a>
+                            <a href="#" title=""><span class="fa fa-twitter"></span></a>
+                            <a href="#" title=""><span class="fa fa-instagram"></span></a>                          
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="images/bl.png" alt="" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">HOME</a></li>                  
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="tracking.html">ORDER TRACKING</a></li>
+                    <li><a href="pricing.html">PRICING</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section subbanner" style="background:url('images/slide_page.jpg') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="caption">
+                        <h3>YOUR CART</h3>
+                        <ol class="breadcrumb">
+                          <li class="active">Review your order before payment</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Your Order Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-items">
+                                <!-- Items will be dynamically added here -->
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Notes:</h4>
+                                <p>- Your laundry will be picked up within 24 hours</p>
+                                <p>- Standard delivery takes 48 hours</p>
+                                <p>- Express delivery available on request</p>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <h4>Total Amount: <span id="total-amount">0</span> INR</h4>
+                                <button class="btn btn-primary" id="checkout-button">Proceed to Payment</button>
+                                <button class="btn btn-default" id="continue-shopping">Continue Shopping</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <div class="footer">
+        <div class="f-desc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>ABOUT US</h4>
+                            </div>
+                            <p>We provides premium washing and dry cleaning service leveraging mobile based technology.
+                                our aims at providing high quality laundry services coupled with customized experience and express delivery.
+                                We pick up your dirty clothes from your doorstep and deliver fresh, clean clothes back at your doorstep.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>CONNECT WITH US</h4>
+                            </div>
+                            <div class="footer-sosmed">
+                                <a href="https://web.facebook.com/brightloom" title="">
+                                    <div class="item">
+                                        <i class="fa fa-facebook"></i>
+                                    </div>
+                                </a>
+                                <a href="#" title="">
+                                    <div class="item">
+                                        <i class="fa fa-twitter"></i>
+                                    </div>
+                                </a>
+                                <a href="#" title="">
+                                    <div class="item">
+                                        <i class="fa fa-instagram"></i>
+                                    </div>
+                                </a>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>OPERATIONAL TIMINGS</h4>
+                            </div>
+                            <p>
+                                Monday-Saturday<br>
+                                10AM-6PM<br><br><br>
+                                * We are happy to help you.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>GET IN TOUCH</h4>
+                            </div>
+                            <div class="footer-getintouch">
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-phone"></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Phone</div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3">9306068586, 7240634662 </div>
+                                    </div>
+                                </div>
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-envelope "></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Email</div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3"><a href="mailto:brightloom@wash.com" title="">brightloom@wash.com</a></div>
+                                    </div>
+                                </div>
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-globe"></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Website </div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3">www.brightloom.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartItemsContainer = document.getElementById("cart-items");
+            let totalAmount = 0;
+            
+            // Function to render the entire cart
+            function renderCart() {
+                // Clear existing items
+                cartItemsContainer.innerHTML = '';
+                totalAmount = 0;
+                
+                cart.forEach((item, index) => {
+                    let row = document.createElement("tr");
+                    let itemPrice = parseFloat(item.price);
+                    
+                    // Set default quantity if not present
+                    if (!item.quantity) {
+                        item.quantity = 1;
+                    }
+                    
+                    row.innerHTML = `
+                        <td>${item.orderId || "N/A"}</td>
+                        <td>${item.name}</td>
+                        <td>${itemPrice} INR</td>
+                        <td>
+                            <div class="quantity-control">
+                                <button class="btn btn-xs btn-default decrease-quantity" data-index="${index}">-</button>
+                                <span class="quantity-value">${item.quantity}</span>
+                                <button class="btn btn-xs btn-primary increase-quantity" data-index="${index}">+</button>
+                            </div>
+                        </td>
+                        <td class="item-total">${(itemPrice * item.quantity).toFixed(2)} INR</td>
+                        <td>
+                            <button class="btn btn-xs btn-danger remove-item" data-index="${index}">
+                                <i class="fa fa-trash"></i> Remove
+                            </button>
+                        </td>
+                    `;
+                    cartItemsContainer.appendChild(row);
+                    totalAmount += (itemPrice * item.quantity);
+                });
+
+                document.getElementById("total-amount").textContent = totalAmount.toFixed(2);
+                
+                // Add event listeners for quantity buttons
+                document.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        updateQuantity(index, 1);
+                    });
+                });
+                
+                document.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        updateQuantity(index, -1);
+                    });
+                });
+                
+                // Add event listeners for remove buttons
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        removeItem(index);
+                    });
+                });
+            }
+            
+            // Function to update item quantity
+            function updateQuantity(index, change) {
+                // Update the quantity (minimum quantity is 1)
+                cart[index].quantity = Math.max(1, (cart[index].quantity || 1) + change);
+                
+                // Update localStorage and re-render the cart
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderCart();
+            }
+            
+            // Function to remove an item from cart
+            function removeItem(index) {
+                if (confirm("Are you sure you want to remove this item?")) {
+                    // Remove the item from the cart array
+                    cart.splice(index, 1);
+                    
+                    // Update localStorage and re-render the cart
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    renderCart();
+                    
+                    // Show empty cart message if no items left
+                    if (cart.length === 0) {
+                        cartItemsContainer.innerHTML = '<tr><td colspan="6" class="text-center">Your cart is empty</td></tr>';
+                        document.getElementById("total-amount").textContent = "0.00";
+                    }
+                }
+            }
+            
+            // Initial cart render
+            renderCart();
+            
+            // If cart is empty, show message
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<tr><td colspan="6" class="text-center">Your cart is empty</td></tr>';
+            }
+            
+            document.getElementById("checkout-button").addEventListener("click", function() {
+                if (cart.length === 0) {
+                    alert("Your cart is empty. Please add items before proceeding to payment.");
+                    return;
+                }
+                
+                // Get the order ID from the first item in the cart
+                const orderId = cart[0].orderId;
+                
+                // Update order status in localStorage
+                const orders = JSON.parse(localStorage.getItem("orders")) || [];
+                const orderIndex = orders.findIndex(o => o.orderId === orderId);
+                
+                if (orderIndex !== -1) {
+                    const today = new Date().toISOString().split('T')[0];
+                    
+                    // Update order status
+                    orders[orderIndex].status = "Payment Completed";
+                    
+                    // Add new tracking update
+                    orders[orderIndex].trackingUpdates.push({
+                        date: today,
+                        status: "Payment Completed",
+                        details: "Payment has been received. Your order is now being processed."
+                    });
+                    
+                    localStorage.setItem("orders", JSON.stringify(orders));
+                }
+                
+                alert("Proceeding to payment...");
+                // Here you would normally redirect to a payment gateway
+                // For demo purposes, we'll just clear the cart and show successful message
+                setTimeout(function() {
+                    localStorage.removeItem("cart");
+                    alert("Payment successful! Your order has been placed. You can track your order using ID: " + orderId);
+                    window.location.href = "tracking.html?autotrack=true";
+                }, 1500);
+            });
+            
+            document.getElementById("continue-shopping").addEventListener("click", function() {
+                window.location.href = "form.html";
+            });
+        });
+    </script>
+</body>
+</html>

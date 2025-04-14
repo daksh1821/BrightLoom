@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Orders</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .code-block {
+            margin-bottom: 30px;
+        }
+        .btn-group {
+            margin-bottom: 20px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-family: monospace;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Tracking Debug Utility</h1>
+        <p>Use this tool to diagnose and fix issues with order tracking.</p>
+
+        <div class="btn-group" role="group">
+            <button class="btn btn-primary" id="btn-load-orders">Load Orders</button>
+            <button class="btn btn-info" id="btn-create-sample">Create Sample Order</button>
+            <button class="btn btn-success" id="btn-save-orders">Save Modified Orders</button>
+            <button class="btn btn-danger" id="btn-clear-orders">Clear Orders</button>
+            <button class="btn btn-warning" id="btn-back">Back to Tracking</button>
+        </div>
+
+        <div id="order-data" class="code-block">
+            <h3>Current Orders in localStorage</h3>
+            <textarea id="orders-json"></textarea>
+            <p class="help-block">You can edit the JSON data above and click "Save Modified Orders" to update the orders in localStorage.</p>
+        </div>
+
+        <div id="debug-info" class="code-block">
+            <h3>Last Order ID</h3>
+            <pre id="last-order-id">Loading...</pre>
+        </div>
+
+        <div id="status-messages" class="alert alert-info" style="display: none;"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ordersTextarea = document.getElementById('orders-json');
+            const lastOrderIdPre = document.getElementById('last-order-id');
+            const statusMessages = document.getElementById('status-messages');
+
+            // Display current localStorage data
+            function loadOrderData() {
+                try {
+                    // Get and display orders
+                    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    ordersTextarea.value = JSON.stringify(orders, null, 2);
+                    
+                    // Get and display last order ID
+                    const lastOrderId = localStorage.getItem('lastOrderId') || 'Not found';
+                    lastOrderIdPre.textContent = lastOrderId;
+
+                    showStatus(`Loaded ${orders.length} orders from localStorage.`, 'info');
+                } catch (error) {
+                    showStatus(`Error loading orders: ${error.message}`, 'danger');
+                }
+            }
+
+            // Create a sample order for testing
+            function createSampleOrder() {
+                try {
+                    const orderId = 'ORD-' + Math.random().toString(36).substring(2, 10).toUpperCase();
+                    const today = new Date().toISOString().split('T')[0];
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    const tomorrowStr = tomorrow.toISOString().split('T')[0];
+
+                    const sampleOrder = {
+                        orderId: orderId,
+                        name: "Test Customer",
+                        email: "test@example.com",
+                        phone: "1234567890",
+                        area: "Test Area",
+                        address: "123 Test Street",
+                        zip: "12345",
+                        deliveryType: "Regular",
+                        paymentMethod: "upi",
+                        clothes: [
+                            { name: "Shirt", price: "50" },
+                            { name: "Pants", price: "70" }
+                        ],
+                        orderDate: today,
+                        status: "Order Placed",
+                        expectedDelivery: tomorrowStr,
+                        trackingUpdates: [
+                            {
+                                date: today,
+                                status: "Order Placed",
+                                details: "Your order has been received and is being processed."
+                            }
+                        ]
+                    };
+
+                    // Get existing orders or create empty array
+                    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                    
+                    // Add sample order
+                    orders.push(sampleOrder);
+                    
+                    // Save back to localStorage
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    localStorage.setItem('lastOrderId', orderId);
+
+                    // Reload order data
+                    loadOrderData();
+                    
+                    showStatus(`Created sample order with ID: ${orderId}`, 'success');
+                } catch (error) {
+                    showStatus(`Error creating sample order: ${error.message}`, 'danger');
+                }
+            }
+
+            // Save modified orders
+            function saveOrders() {
+                try {
+                    // Parse the JSON in the textarea
+                    const orders = JSON.parse(ordersTextarea.value);
+                    
+                    // Save to localStorage
+                    localStorage.setItem('orders', JSON.stringify(orders));
+                    
+                    // Update last order ID if orders exist
+                    if (orders.length > 0) {
+                        localStorage.setItem('lastOrderId', orders[orders.length - 1].orderId);
+                    }
+                    
+                    // Reload order data
+                    loadOrderData();
+                    
+                    showStatus('Orders saved successfully!', 'success');
+                } catch (error) {
+                    showStatus(`Error saving orders: ${error.message}`, 'danger');
+                }
+            }
+
+            // Clear all orders
+            function clearOrders() {
+                if (confirm('Are you sure you want to clear all orders? This cannot be undone.')) {
+                    localStorage.removeItem('orders');
+                    localStorage.removeItem('lastOrderId');
+                    loadOrderData();
+                    showStatus('All orders have been cleared.', 'warning');
+                }
+            }
+
+            // Show status message
+            function showStatus(message, type = 'info') {
+                statusMessages.textContent = message;
+                statusMessages.style.display = 'block';
+                statusMessages.className = `alert alert-${type}`;
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    statusMessages.style.display = 'none';
+                }, 5000);
+            }
+
+            // Event listeners
+            document.getElementById('btn-load-orders').addEventListener('click', loadOrderData);
+            document.getElementById('btn-create-sample').addEventListener('click', createSampleOrder);
+            document.getElementById('btn-save-orders').addEventListener('click', saveOrders);
+            document.getElementById('btn-clear-orders').addEventListener('click', clearOrders);
+            document.getElementById('btn-back').addEventListener('click', function() {
+                window.location.href = 'tracking.html';
+            });
+
+            // Initial load
+            loadOrderData();
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book My Wash</title>
+    <meta name="description" content="Laundryes - Laundry Business Html Template. ">
+    <meta name="keywords" content="laundry, clothes, wash, clean">
+    <meta name="author" content="1callwash.com"> 
+    
+    <!-- ==============================================
+    Favicons
+    =============================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    
+    <!-- ==============================================
+    CSS
+    =============================================== -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    
+    
+    
+    <!-- ==============================================
+    Google Fonts
+    =============================================== -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,900' rel='stylesheet' type='text/css'>
+    
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    
+    
+    <script type="text/javascript" src="js/modernizr.min.js"></script>
+    
+    <style>
+        .clothes-selection-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .clothes-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .clothes-item:last-child {
+            border-bottom: none;
+        }
+        
+        .clothes-item-checkbox {
+            margin-right: 10px;
+        }
+        
+        .clothes-item-name {
+            flex-grow: 1;
+        }
+        
+        .clothes-item-price {
+            font-weight: bold;
+            margin-left: 20px;
+            color: #555;
+        }
+        
+        .selected-items-summary {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!-- Load page -->
+    <div class="animationload">
+        <div class="loader"></div>
+    </div>
+    
+    
+    <!-- NAVBAR SECTION -->
+    <div class="navbar navbar-main navbar-fixed-top">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                        <div class="info">
+                            <div class="info-item">
+                                <span class="fa fa-phone"></span> Phone 9306068586, 7240634662
+                            </div>
+                            <div class="info-item">
+                                <span class="fa fa-envelope-o"></span> <a href="mailto:brightloom@wash.com" title="">Email brightloom@wash.com</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                        <div class="top-sosmed pull-right">
+                            <a href="https://web.facebook.com/brightloom" title=""><span class="fa fa-facebook"></span></a>
+                            <a href="#" title=""><span class="fa fa-twitter"></span></a>
+                            <a href="#" title=""><span class="fa fa-instagram"></span></a>                          
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="images/Screenshot(282).png" alt="" /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">HOME</a></li>                  
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="tracking.html">ORDER TRACKING</a></li>
+                    <li><a href="pricing.html">PRICING</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- BANNER -->
+    <div class="section subbanner" style="background:url('images/slide_page.jpg') no-repeat center center;   -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="caption">
+                        <h3>BOOK MY WASH</h3>
+                        <ol class="breadcrumb">
+                          
+                          <li class="active">Sit back and give your hands Relax!</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    <!-- ABOUT SECTION -->
+    <div id="services" class="section services">
+        <div class="container">
+            <br><br><br>
+            <div class="row pbot-main">
+                <div class="col-sm-12 col-md-6">
+                    <form action="#" class="form-contact shake" id="contactForm"  data-toggle="validator">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name *" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="email" placeholder="Enter Email ">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number *" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <select id="area">
+                                <option value="select city">Select area</value>
+                                <option value="Banasthali">Banasthali</value>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="address" placeholder="Enter Address *" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="zip" placeholder="Enter Pincode *" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <select id="delivery-type">
+                                <option value="select city">Type of delivery</value>
+                                <option value="Regular">Regular</value>
+                                <option value="Express">Express</value>
+                            </select>
+                            <div class="form-group">
+                                <select id="payment-method">
+                                    <option value="" disabled selected>Payment Method</option>
+                                    <option value="upi">UPI (Google Pay, PhonePe, Paytm, BHIM, etc.)</option>
+                                    <option value="cards">Credit/Debit Cards (Visa, MasterCard, RuPay, etc.)</option>
+                                    <option value="netbanking">Net Banking</option>
+                                    <option value="wallets">Wallet Payments (Paytm, Amazon Pay, etc.)</option>
+                                </select>
+                            </div>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <select id="clothes-dropdown" class="form-control" required>
+                                <option value="">Select Clothes</option>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="clothes-selection">Select Clothes</label>
+                            <div id="clothes-container" class="clothes-selection-container">
+                                <!-- Clothes options will be dynamically added here -->
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        
+                        <input type="checkbox" name="checkbox" >
+                        <div class="agree">
+                        You agree to our <a href="">Terms & conditions</a> and <a href="">Privacy policies</a>.
+                        </div>
+                        <div class="form-group">
+                            <div id="success"></div>
+                            <button type="submit" class="btn btn-default">BOOK MY WASH</button>
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- FOOTER SECTION -->
+    <div class="footer">
+        <div class="f-desc">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>ABOUT US</h4>
+                            </div>
+                            <p> We provides premium washing and dry cleaning service leveraging mobile based technology.
+                                our aims at providing high quality laundry services coupled with customized experience and express delivery.
+                                We pick up your dirty clothes from your doorstep and deliver fresh, clean clothes back at your doorstep.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>CONNECT WITH US</h4>
+                            </div>
+                            <div class="footer-sosmed">
+                                <a href="https://web.facebook.com/brightloom" title="">
+                                    <div class="item">
+                                        <i class="fa fa-facebook"></i>
+                                    </div>
+                                </a>
+                                <a href="#" title="">
+                                    <div class="item">
+                                        <i class="fa fa-twitter"></i>
+                                    </div>
+                                </a>
+                                <a href="#" title="">
+                                    <div class="item">
+                                        <i class="fa fa-instagram"></i>
+                                    </div>
+                                </a>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>OPERATIONAL TIMINGS</h4>
+                            </div>
+                            <p>
+                                Monday-Saturday<br>
+                                10AM-6PM<br><br><br>
+                                * We are happy to help you.
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <div class="footer-item">
+                            <div class="footer-title">
+                                <h4>GET IN TOUCH</h4>
+                            </div>
+                            <div class="footer-getintouch">
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-phone"></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Phone</div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3">9306068586, 7240634662 </div>
+                                    </div>
+                                </div>
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-envelope "></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Email</div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3"><a href="mailto:brightloom@wash.com" title="">brightloom@wash.com</a></div>
+                                    </div>
+                                </div>
+                                <div class="footer-getintouch-item">
+                                    <div class="icon">
+                                        <b class="fa fa-globe"></b>
+                                    </div>
+                                    <div class="desc">
+                                        <div class="desc-1">Website </div>
+                                        <div class="desc-2">:</div>
+                                        <div class="desc-3">www.brightloom.com</div>
+                                    </div>
+                                </div>
+                                                            
+                            </div>
+                        </div>
+                    </div>                 
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?sensor=false&amp;ver=4.1.5'></script>
+    <script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
+    <script type="text/javascript" src="js/validator.min.js"></script>
+    <script type="text/javascript" src="js/form-scripts.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script>
+    document.getElementById("contactForm").addEventListener("submit", async function (event) {
+        event.preventDefault();
+    
+        // Generate Order ID
+        function generateOrderId() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let orderId = "ORD-";
+            for (let i = 0; i < 8; i++) {
+                orderId += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return orderId;
+        }
+    
+        const orderId = generateOrderId();
+        const orderDate = new Date().toISOString().split('T')[0]; // Current date in YYYY-MM-DD format
+    
+        // Get all selected clothes
+        const selectedClothes = [];
+        document.querySelectorAll('.clothes-item-checkbox:checked').forEach(checkbox => {
+            selectedClothes.push({
+                name: checkbox.dataset.name,
+                price: checkbox.dataset.price
+            });
+        });
+        
+        // Validate at least one clothing item is selected
+        if (selectedClothes.length === 0) {
+            alert("Please select at least one clothing item");
+            return;
+        }
+    
+        const orderData = {
+            orderId: orderId,
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            area: document.getElementById("area").value || "Not specified",
+            address: document.getElementById("address").value,
+            zip: document.getElementById("zip").value,
+            deliveryType: document.getElementById("delivery-type").value || "Regular",
+            paymentMethod: document.getElementById("payment-method").value || "Not specified",
+            clothes: selectedClothes,
+            orderDate: orderDate,
+            status: "Order Placed",
+            expectedDelivery: calculateExpectedDelivery(document.getElementById("delivery-type").value || "Regular"),
+            trackingUpdates: [
+                {
+                    date: orderDate,
+                    status: "Order Placed",
+                    details: "Your order has been received and is being processed."
+                }
+            ]
+        };
+    
+        function calculateExpectedDelivery(deliveryType) {
+            const today = new Date();
+            let deliveryDate = new Date(today);
+            
+            // Add days based on delivery type
+            if (deliveryType === "Express") {
+                deliveryDate.setDate(today.getDate() + 1); // 1 day for express
+            } else {
+                deliveryDate.setDate(today.getDate() + 2); // 2 days for regular
+            }
+            
+            // Format as YYYY-MM-DD
+            return deliveryDate.toISOString().split('T')[0];
+        }
+    
+        try {
+            // Store order data in localStorage for tracking - ensuring we preserve existing orders
+            let orders = [];
+            try {
+                // Try to get existing orders
+                const existingOrders = localStorage.getItem("orders");
+                if (existingOrders) {
+                    orders = JSON.parse(existingOrders);
+                }
+            } catch (parseError) {
+                console.error("Error parsing existing orders:", parseError);
+                // If error in parsing, start with empty array
+                orders = [];
+            }
+            
+            // Add new order
+            orders.push(orderData);
+            
+            // Save back to localStorage, using try-catch to handle any errors
+            try {
+                localStorage.setItem("orders", JSON.stringify(orders));
+                console.log("Orders saved successfully:", orders);
+            } catch (storageError) {
+                console.error("Error saving orders to localStorage:", storageError);
+                alert("Warning: Could not save order to browser storage. Order tracking might not work.");
+            }
+            
+            // Save lastOrderId separately for easy tracking
+            localStorage.setItem("lastOrderId", orderId);
+            
+            // Add items to cart in localStorage
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            
+            // Add each selected item to the cart
+            selectedClothes.forEach(item => {
+                cart.push({
+                    name: item.name,
+                    price: item.price,
+                    orderId: orderId,
+                    quantity: 1  // Default quantity set to 1
+                });
+            });
+            
+            localStorage.setItem("cart", JSON.stringify(cart));
+            
+            // Show success message
+            alert("Booking successful! Your order ID is: " + orderId + ". Please save this ID for tracking your order.");
+            
+            // Redirect to cart page
+            window.location.href = "cart.html";
+            
+        } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred: " + error.message);
+        }
+    });
+</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("pricing.html")
+                .then(response => response.text())
+                .then(html => {
+                    let parser = new DOMParser();
+                    let doc = parser.parseFromString(html, "text/html");
+                    let items = doc.querySelectorAll(".item"); // Selecting all items in pricing.html
+                    let dropdown = document.getElementById("clothes-dropdown");
+        
+                    items.forEach(item => {
+                        let name = item.querySelector(".item-name").textContent.trim();
+                        let price = item.querySelector(".item-price").textContent.trim();
+                        let option = document.createElement("option");
+                        option.value = name;
+                        option.textContent = `${name} - ${price}`;
+                        dropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error("Error loading prices:", error));
+        });
+        </script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("pricing.html")
+            .then(response => response.text())
+            .then(html => {
+                let parser = new DOMParser();
+                let doc = parser.parseFromString(html, "text/html");
+                let items = doc.querySelectorAll(".item"); // Selecting all items in pricing.html
+                let clothesContainer = document.getElementById("clothes-container");
+                
+                // Create a div to show selected items count
+                let summaryDiv = document.createElement("div");
+                summaryDiv.className = "selected-items-summary";
+                summaryDiv.textContent = "No items selected";
+                
+                items.forEach((item, index) => {
+                    let name = item.querySelector(".item-name").textContent.trim();
+                    let price = item.querySelector(".item-price").textContent.trim();
+                    let priceValue = price.match(/(\d+)/)[0]; // Extract just the number
+                    
+                    let clothesItem = document.createElement("div");
+                    clothesItem.className = "clothes-item";
+                    
+                    // Create checkbox with label
+                    let checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.className = "clothes-item-checkbox";
+                    checkbox.id = `clothes-${index}`;
+                    checkbox.dataset.name = name;
+                    checkbox.dataset.price = priceValue;
+                    
+                    let label = document.createElement("label");
+                    label.htmlFor = `clothes-${index}`;
+                    label.className = "clothes-item-name";
+                    label.textContent = name;
+                    
+                    let priceSpan = document.createElement("span");
+                    priceSpan.className = "clothes-item-price";
+                    priceSpan.textContent = price;
+                    
+                    // Add elements to the clothes item container
+                    clothesItem.appendChild(checkbox);
+                    clothesItem.appendChild(label);
+                    clothesItem.appendChild(priceSpan);
+                    
+                    clothesContainer.appendChild(clothesItem);
+                    
+                    // Add event listener to update summary when checkbox is clicked
+                    checkbox.addEventListener("change", updateSummary);
+                });
+                
+                clothesContainer.appendChild(summaryDiv);
+                
+                // Function to update summary of selected items
+                function updateSummary() {
+                    const selectedCheckboxes = document.querySelectorAll('.clothes-item-checkbox:checked');
+                    const count = selectedCheckboxes.length;
+                    
+                    if (count === 0) {
+                        summaryDiv.textContent = "No items selected";
+                    } else {
+                        let totalPrice = 0;
+                        selectedCheckboxes.forEach(cb => {
+                            totalPrice += parseInt(cb.dataset.price);
+                        });
+                        summaryDiv.textContent = `${count} item(s) selected - Total: ${totalPrice} Rs`;
+                    }
+                }
+            })
+            .catch(error => console.error("Error loading prices:", error));
+    });
+</script>
+        <!-- Floating Add to Cart Button -->
+    <button id="floating-cart-btn" class="floating-cart">
+        <i class="fa fa-shopping-cart"></i> View Cart
+    </button>
+    
+    <script>
+        document.getElementById("floating-cart-btn").addEventListener("click", function() {
+            window.location.href = "cart.html"; // Redirects to cart page
+        });
+    </script>
+
+    <style>
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .floating-cart:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>
+

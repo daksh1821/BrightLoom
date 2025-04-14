@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/admin-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>ADMIN PANEL</h2>
+        <ul>
+            <li><a href="#" id="updatePrices">Update Prices</a></li>
+            <li><a href="#" id="orderDetails">Order Details</a></li>
+            <li><a href="index.html" id="logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Welcome, Admin</h1>
+        <div id="content-area">
+            <p>Select an option from the menu to update the website.</p>
+            <div id="updatePricesSection" style="display: none;">
+                <h2>Update Prices</h2>
+                <form id="updatePricesForm">
+                    <!-- Dry Cleaning -->
+                    <div class="price-category">
+                        <h3>Dry Cleaning</h3>
+                        <div class="price-row">
+                            <div class="price-item">
+                                <label>All Shirts:</label>
+                                <input type="number" id="shirtsPrice" value="50">
+                                <span>Rs</span>
+                            </div>
+                    
+                            <div class="price-item">
+                                <label>Pants, Jeans, Skirt:</label>
+                                <input type="number" id="pantsPrice" value="50">
+                                <span>Rs</span>
+                            </div>
+                    
+                            <div class="price-item">
+                                <label>Sweaters:</label>
+                                <input type="number" id="sweatersPrice" value="100">
+                                <span>Rs</span>
+                            </div>
+                    
+                            <div class="price-item">
+                                <label>Tie, Scarf:</label>
+                                <input type="number" id="tieScarfPrice" value="25">
+                                <span>Rs</span>
+                            </div>
+                    
+                            <div class="price-item">
+                                <label>Coat, Heavy Jacket, Dress:</label>
+                                <input type="number" id="coatPrice" value="200">
+                                <span>Rs</span>
+                            </div>
+                        </div>
+                    </div>
+    <!-- Laundry Press -->
+<div class="price-category">
+    <h3>Laundry Press</h3>
+    <div class="price-row">
+        <div class="price-item">
+            <label>Sheets:</label>
+            <input type="number" id="sheetsPrice" value="100">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Pillowcases:</label>
+            <input type="number" id="pillowcasesPrice" value="50">
+            <span>Rs</span>
+        </div>
+        <div class="price-item">
+            <label>Fancy Dresses:</label>
+            <input type="number" id="leatherFancyDressesPrice" value="300">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Duvet Covers:</label>
+            <input type="number" id="duvetCoversPrice" value="100">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Bed Covers:</label>
+            <input type="number" id="bedCoversPrice" value="200">
+            <span>Rs</span>
+        </div>
+    </div>
+</div>
+
+<!-- Special Items -->
+<div class="price-category">
+    <h3>Special Items</h3>
+    <div class="price-row">
+        <div class="price-item">
+            <label>Fancy Dresses:</label>
+            <input type="number" id="fancyDressesPrice" value="300">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Comforters:</label>
+            <input type="number" id="comfortersPrice" value="150">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Handkerchief:</label>
+            <input type="number" id="handkerchiefPrice" value="30">
+            <span>Rs</span>
+        </div>
+        <div class="price-item">
+            <label>Duvet Covers:</label>
+            <input type="number" id="duvetCoversPrice" value="100">
+            <span>Rs</span>
+        </div>
+        <div class="price-item">
+            <label>Bed Covers(Full size):</label>
+            <input type="number" id="bedCoversPrice" value="200">
+            <span>Rs</span>
+        </div>
+    </div>
+</div>
+
+<!-- Leather Items -->
+<div class="price-category">
+    <h3>Leather Items</h3>
+    <div class="price-row">
+        <div class="price-item">
+            <label>Fancy Dresses:</label>
+            <input type="number" id="leatherFancyDressesPrice" value="300">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Comforters:</label>
+            <input type="number" id="leatherComfortersPrice" value="150">
+            <span>Rs</span>
+        </div>
+
+        <div class="price-item">
+            <label>Handkerchief:</label>
+            <input type="number" id="leatherHandkerchiefPrice" value="30">
+            <span>Rs</span>
+        </div>
+        <div class="price-item">
+            <label>Handkerchief:</label>
+            <input type="number" id="handkerchiefPrice" value="30">
+            <span>Rs</span>
+        </div>
+        <div class="price-item">
+            <label>Comforters:</label>
+            <input type="number" id="comfortersPrice" value="150">
+            <span>Rs</span>
+        </div>
+    </div>
+</div>
+
+
+            
+                    <button type="submit">Save Changes</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("updatePrices").addEventListener("click", function () {
+                document.getElementById("content-area").innerHTML = document.getElementById("updatePricesSection").innerHTML;
+                
+                // Attach event listener AFTER the form is loaded
+                document.getElementById("updatePricesForm").addEventListener("submit", updatePrices);
+            });
+        
+            async function updatePrices(event) {
+                event.preventDefault(); // Prevent form submission from reloading the page
+        
+                const updatedPrices = [
+                    {
+                        category: "Dry Cleaning",
+                        items: [
+                            { name: "All Shirts", price: document.getElementById("shirtsPrice").value },
+                            { name: "Pants, Jeans, Skirt", price: document.getElementById("pantsPrice").value },
+                            { name: "Sweaters", price: document.getElementById("sweatersPrice").value },
+                            { name: "Tie, Scarf", price: document.getElementById("tieScarfPrice").value },
+                            { name: "Coat, Heavy Jacket, Dress", price: document.getElementById("coatPrice").value }
+                        ]
+                    },
+                    {
+                        category: "Laundry Press",
+                        items: [
+                            { name: "Sheets", price: document.getElementById("sheetsPrice").value },
+                            { name: "Pillowcases", price: document.getElementById("pillowcasesPrice").value },
+                            { name: "Duvet Covers", price: document.getElementById("duvetCoversPrice").value },
+                            { name: "Bed Covers", price: document.getElementById("bedCoversPrice").value }
+                        ]
+                    },
+                    {
+                        category: "Special Items",
+                        items: [
+                            { name: "Fancy Dresses", price: document.getElementById("fancyDressesPrice").value },
+                            { name: "Comforters", price: document.getElementById("comfortersPrice").value },
+                            { name: "Handkerchief", price: document.getElementById("handkerchiefPrice").value }
+                        ]
+                    },
+                    {
+                        category: "Leather Items",
+                        items: [
+                            { name: "Fancy Dresses", price: document.getElementById("leatherFancyDressesPrice").value },
+                            { name: "Comforters", price: document.getElementById("leatherComfortersPrice").value },
+                            { name: "Handkerchief", price: document.getElementById("leatherHandkerchiefPrice").value }
+                        ]
+                    }
+                ];
+                try {
+                    const response = await fetch("/update-prices", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(updatedPrices)
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        alert("Prices updated successfully!");
+                        location.reload(); // Refresh the page to reflect changes
+                    } else {
+                        alert("Failed to update prices.");
+                    }
+                } catch (error) {
+                    console.error("Error updating prices:", error);
+                    alert("An error occurred while updating prices.");
+                }
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("orderDetails").addEventListener("click", async function () {
+                try {
+                    const response = await fetch("/get-orders");
+                    const orders = await response.json();
+                    let orderHTML = "<h2>Order Details</h2>";
+                    if (orders.length === 0) {
+                        orderHTML += "<p>No orders found.</p>";
+                    } else {
+                        orderHTML += "<ul>";
+                        orders.forEach(order => {
+                            orderHTML += `<li>Order ID: ${order._id}, Status: ${order.status}, Total: Rs ${order.total}</li>`;
+                        });
+                        orderHTML += "</ul>";
+                    }
+                    document.getElementById("content-area").innerHTML = orderHTML;
+                } catch (error) {
+                    console.error("Error fetching orders:", error);
+                    document.getElementById("content-area").innerHTML = "<p>Failed to load orders.</p>";
+                }
+            });
+        });
+    </script>
+    
+    
+</body>
+</html>

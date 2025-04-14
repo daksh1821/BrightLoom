@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - 1callwash</title>
+    <meta name="description" content="Login to your 1callwash account">
+    <meta name="keywords" content="login, laundry, 1callwash">
+    <meta name="author" content="1callwash.com">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+    <!-- Load page -->
+    <div class="animationload">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Login Section -->
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="login-form">
+                        <h2>Login to Your Account</h2>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+                            <p><a href="index.html"><i class="fa fa-home"></i> Back to Home</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <!-- Scripts -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Show loading indicator
+            const submitButton = document.querySelector('#loginForm button[type="submit"]');
+            submitButton.innerHTML = 'Logging in...';
+            submitButton.disabled = true;
+
+            // Get form data
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Send data to the backend server
+                const response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message); // Show success message
+                    window.location.href = 'index.html'; // Redirect to index.html
+                } else {
+                    alert(data.error || 'Error submitting form'); // Show error message
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                alert('Error submitting form');
+            } finally {
+                // Reset button text and enable it
+                submitButton.innerHTML = 'Login';
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+    
+</body>
+</html>

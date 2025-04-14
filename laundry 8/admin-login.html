@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - 1CallWash</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/admin-style.css" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminEmail">Email:</label>
+                    <input type="email" id="adminEmail" name="adminEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password:</label>
+                    <input type="password" id="adminPassword" name="adminPassword" required>
+                </div>
+                <button type="submit" class="btn">Login as Admin</button>
+            </form>
+            <p>Don't have an account? <a href="admin-signup.html">Sign Up</a></p>
+            <p><a href="index.html" style="color: #fff;">Back to Home</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("adminLoginForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent default form submission
+            let email = document.getElementById("adminEmail").value;
+            let password = document.getElementById("adminPassword").value;
+            try {
+                const response = await fetch("http://localhost:3000/admin-login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: email, password: password })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    alert("Login Successful!");
+                    window.location.href = "admin-dashboard.html"; // Redirect to dashboard
+                } else if (data.message === "User not found") {
+                    alert("User not found. Please sign up first.");
+                    window.location.href = "admin-signup.html"; // Redirect to sign-up page
+                } else {
+                    alert("Invalid Email or Password!");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+    </script>
+</body>
+</html>
